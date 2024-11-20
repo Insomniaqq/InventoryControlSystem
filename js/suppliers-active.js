@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="item">Дата: <span>${order.date}</span></div>
                 <div class="item">Статус: <span class="status">${order.status}</span></div>
                 <button class="info-button item">Информация</button>
-                <button class="edit-button item">Подтвердить</button>
+                <button class="edit-button item" ${order.status === "Подтверждено" || order.status === "Отменен" ? 'disabled' : ''}>Подтвердить</button>
                 <button class="delete-button item" data-order-id="${order.orderID}">Отменить</button>`;
 
             orderItem.querySelector('.info-button').addEventListener('click', function () {
@@ -40,42 +40,46 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             orderItem.querySelector('.edit-button').addEventListener('click', function () {
-                
                 let orders = JSON.parse(localStorage.getItem('orders')) || [];
-                
-                
-                const orderToUpdate = orders.find(order => order.orderID === order.orderID);
+                const orderToUpdate = orders.find(o => o.orderID === order.orderID);
+
                 if (orderToUpdate) {
-                    
                     if (orderToUpdate.status === "Подтверждено") {
-                        alert("Этот заказ уже был подтвержден."); 
-                        return; 
+                        displayErrorMessage("Этот заказ уже был подтвержден.");
+                        return;
                     }
-                    
-                    orderToUpdate.status = "Подтверждено"; 
-                    
-                    this.disabled = true;  
-                    this.textContent = "Подтверждено";  
+
+                    if (orderToUpdate.status === "Отменен") {
+                        displayErrorMessage("Этот заказ был отменен и не может быть подтвержден.");
+                        return;
+                    }
+
+                    // Подтверждение заказа
+                    orderToUpdate.status = "Подтверждено";
+
+                    // Отключение кнопки и изменение текста
+                    this.disabled = true;
+                    this.textContent = "Подтверждено";
+
+                    localStorage.setItem('orders', JSON.stringify(orders));
+
+                    let completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
+                    completedOrders.push({
+                        buyerID: currentUser.id,
+                        orderID: order.orderID,
+                        date: order.date,
+                        status: "Подтверждено"
+                    });
+                    localStorage.setItem('completedOrders', JSON.stringify(completedOrders));
+
+                    window.location.href = "suppliers-complete.html";
                 }
-                
-                
-                localStorage.setItem('orders', JSON.stringify(orders));
-                
-                
-                let completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
-                completedOrders.push({
-                    buyerID: currentUser.id,
-                    orderID: order.orderID,
-                    date: order.date,
-                    status: "Подтверждено" 
-                });
-                localStorage.setItem('completedOrders', JSON.stringify(completedOrders));
-                
-                window.location.href = "suppliers-complete.html"; 
             });
+
             ordersContainer.appendChild(orderItem);
         });
     }
+
     function showOrderDetails(order) {
         if (!currentUser) {
             console.error("Данные текущего пользователя недоступны.");
@@ -91,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('detailCity').textContent = addressParts[0] || 'Не указано';
         document.getElementById('detailStreet').textContent = addressParts[1] || 'Не указано';
         document.getElementById('detailHouse').textContent = addressParts[2] || 'Не указано';
-
 
         document.getElementById('detailCategory').textContent = order.category || "Не указано";
         document.getElementById('detailName').textContent = order.name || "Не указано";
@@ -111,34 +114,30 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-
     function deleteOrder(orderID) {
         let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-        
         const orderToDelete = orders.find(order => order.orderID === orderID);
         if (orderToDelete) {
-            orderToDelete.status = "Отменен"; 
+            orderToDelete.status = "Отменен";
         }
 
         localStorage.setItem('orders', JSON.stringify(orders));
         loadActiveOrders();
     }
 
-
     const clearButton = document.querySelector('.add-button');
     if (clearButton) {
         clearButton.addEventListener('click', function () {
             if (confirm("Вы уверены, что хотите скрыть все активные заказы?")) {
                 const ordersContainer = document.querySelector('.buyers-list');
-                ordersContainer.innerHTML = ''; 
-                ordersContainer.style.display = 'none'; 
+                ordersContainer.innerHTML = '';
+                ordersContainer.style.display = 'none';
             }
         });
     }
 
     loadActiveOrders();
-
 
     if (!currentUser || currentUser.role !== "Администратор") {
         const adminMenuItem = document.querySelector(".nav__menu .admin");
@@ -146,6 +145,4 @@ document.addEventListener("DOMContentLoaded", function () {
             adminMenuItem.style.display = "none";
         }
     }
-
-    loadActiveOrders();
 });

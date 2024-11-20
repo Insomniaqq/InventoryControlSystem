@@ -136,9 +136,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const addressHouse = document.querySelector('.adress input[placeholder="Дом"]').value;
 
     if (!categoryID || !name || !quantityInputValue || !unit || !addressCity || !addressStreet || !addressHouse) {
-      alert("Пожалуйста, заполните все поля.");
+      displayErrorMessage("Пожалуйста, заполните все поля.");
       return; 
-    }
+  }
+  
+  // Функция для отображения сообщения об ошибке
+  function displayErrorMessage(message) {
+      const errorContainer = document.getElementById('errorContainer');
+      
+      // Если контейнер для ошибок не существует, создадим его
+      if (!errorContainer) {
+          const newErrorContainer = document.createElement('div');
+          newErrorContainer.id = 'errorContainer';
+          newErrorContainer.style.color = 'red'; // Устанавливаем цвет текста
+          newErrorContainer.style.margin = '10px 0'; // Устанавливаем отступы
+          document.body.appendChild(newErrorContainer);
+      }
+  
+      // Обновляем текст сообщения
+      document.getElementById('errorContainer').textContent = message;
+  }
 
     const basePricePerUnit = Math.floor(Math.random() * 1000) + 100; 
     const totalPrice = basePricePerUnit * quantityInputValue; 

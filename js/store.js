@@ -157,9 +157,26 @@ document.addEventListener("DOMContentLoaded", function () {
         const productData = jsonData.data.find(product => product.Наименование === name);
         
         if (!productData) {
-            alert("Товар не найден в базе данных.");
-            return;
-        }
+          displayErrorMessage("Товар не найден в базе данных.");
+          return;
+      }
+      
+      
+      function displayErrorMessage(message) {
+          const errorContainer = document.getElementById('errorContainer');
+          
+          
+          if (!errorContainer) {
+              const newErrorContainer = document.createElement('div');
+              newErrorContainer.id = 'errorContainer';
+              newErrorContainer.style.color = 'red'; 
+              newErrorContainer.style.margin = '10px 0'; 
+              document.body.appendChild(newErrorContainer);
+          }
+      
+          
+          document.getElementById('errorContainer').textContent = message;
+      }
 
         
         const quantityInputValue = document.getElementById('quantityInput').value; 
