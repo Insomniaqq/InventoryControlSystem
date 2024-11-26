@@ -103,53 +103,6 @@ li {
   font-weight: 400;
 }
 
-.table {
-  position: absolute;
-  width: calc(100% - 440px);
-  left: 420px;
-  top: 190px;
-  right: 0px;
-  bottom: 779px;
-  border-collapse: collapse;
-}
-
-tbody td {
-  padding: 20px;
-
-}
-
-tbody th {
-  padding: 20px;
-  text-align: start;
-  font-family: "Inter-Light";
-  font-weight: lighter;
-}
-
-thead th {
-  padding: 20px;
-  text-align: start;
-}
-
-table thead {
-  color: white;
-  background-color: #F09B57;
-  font-family: "Inter-Bold";
-  font-weight: bold;
-  font-size: 23px;
-  box-shadow: 4px 4px 8px rgba(1, 1, 1, 0.1);
-}
-
-table tbody {
-  font-family: "Inter-Light";
-  font-size: 18px;
-  font-weight: lighter;
-  font-style: normal;
-}
-
-tbody tr {
-  border-bottom: 1px solid #ddd;
-}
-
 li {
   text-decoration: none;
   display: flex;
@@ -161,11 +114,14 @@ li {
 }
 
 a {
+  transition: 1s;
+  text-align: center; 
   color: white;
   text-decoration: none;
 }
 
 a:hover {
+  transform: scale(1.2);
   filter: sepia(100%) brightness(90%);
 }
 
@@ -186,26 +142,6 @@ a:hover {
   bottom: 875px;
   font-weight: 400;
   width: 221px;
-}
-
-.table {
-  position: absolute;
-  width: calc(100% - 440px);
-  left: 420px;
-  top: 190px;
-  right: 0px;
-  bottom: 779px;
-  border-collapse: collapse;
-}
-
-tbody th {
-  padding: 20px;
-  text-align: start;
-}
-
-thead th {
-  padding: 20px;
-  text-align: start;
 }
 
 .add-button {
@@ -318,4 +254,42 @@ form select {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+}
+
+
+.table {
+	position: absolute;
+  width: calc(100% - 440px);
+  left: 420px;
+  top: 190px;
+  right: 0px;
+  bottom: 779px;
+	border: none;
+}
+.table thead th {
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	background: #d8d8d8;
+	font-size: 14px;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+.table tbody td {
+	text-align: left;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+.table thead tr th:first-child, .table tbody tr td:first-child {
+	border-left: none;
+}
+.table thead tr th:last-child, .table tbody tr td:last-child {
+	border-right: none;
+}
+.table tbody tr:nth-child(even){
+	background: #f3f3f3;
 }
