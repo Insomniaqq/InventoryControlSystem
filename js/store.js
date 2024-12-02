@@ -97,53 +97,56 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function addProductToTable(product) {
-        const inventoryBody = document.getElementById('inventoryBody');
-
-        const newRow = document.createElement('tr');
-
-        const categoryCell = document.createElement('th');
-        categoryCell.scope = 'row';
-        categoryCell.textContent = product.category;
-
-        const nameCell = document.createElement('td');
-        nameCell.textContent = product.name;
-
-        const quantityCell = document.createElement('td');
-        quantityCell.textContent = product.quantity;
-
-        const idCell = document.createElement('td');
-        idCell.textContent = product.id;
-
-        
-        const deleteButtonCell = document.createElement('td');
-        
-        
-        const deleteButton = document.createElement('button');
-        deleteButton.className = 'delete-button';
-        deleteButton.textContent = '✖';
-
-        
-        deleteButton.addEventListener('click', function() {
-            
-            inventoryBody.removeChild(newRow);
-            
-            removeProductFromLocalStorage(product.id);
-        });
-
-        
-        deleteButtonCell.appendChild(deleteButton);
-
-        
-        newRow.appendChild(categoryCell);
-        newRow.appendChild(nameCell);
-        newRow.appendChild(quantityCell);
-        newRow.appendChild(idCell);
-        
-        
-        newRow.appendChild(deleteButtonCell);
-
-        inventoryBody.appendChild(newRow);
-    }
+      const inventoryBody = document.getElementById('inventoryBody');
+  
+      const newRow = document.createElement('tr');
+  
+      const categoryCell = document.createElement('th');
+      categoryCell.scope = 'row';
+      categoryCell.textContent = product.category;
+  
+      const nameCell = document.createElement('td');
+      nameCell.textContent = product.name;
+  
+      const quantityCell = document.createElement('td');
+      quantityCell.textContent = product.quantity;
+  
+      const idCell = document.createElement('td');
+      idCell.textContent = product.id;
+  
+      const actionsCell = document.createElement('td');
+  
+      // Кнопка редактирования
+      const editButton = document.createElement('button');
+      editButton.className = 'edit-button';
+      editButton.textContent = '✎';
+  
+      editButton.addEventListener('click', function() {
+          openEditForm(product);
+      });
+  
+      actionsCell.appendChild(editButton);
+  
+      // Кнопка удаления
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'delete-button';
+      deleteButton.textContent = '✖';
+  
+      deleteButton.addEventListener('click', function() {
+          inventoryBody.removeChild(newRow);
+          removeProductFromLocalStorage(product.id);
+      });
+  
+      actionsCell.appendChild(deleteButton);
+  
+      newRow.appendChild(categoryCell);
+      newRow.appendChild(nameCell);
+      newRow.appendChild(quantityCell);
+      newRow.appendChild(idCell);
+      newRow.appendChild(actionsCell);
+  
+      inventoryBody.appendChild(newRow);
+  }
 
     loadProductsFromLocalStorage();
 
@@ -215,4 +218,75 @@ document.addEventListener("DOMContentLoaded", function () {
         
         localStorage.setItem("inventoryProducts", JSON.stringify(productsList));
     }
+
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#inventoryBody tr');
+  
+      rows.forEach(row => {
+          const cells = row.querySelectorAll('td');
+          const matches = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(query));
+          row.style.display = matches ? '' : 'none';
+      });
+  });
+
+  let currentEditingProductId;
+
+function openEditForm(product) {
+    currentEditingProductId = product.id;
+    
+    // Установка текущего количества и единицы измерения
+    const [quantity, unit] = product.quantity.split(' ');
+    
+    document.getElementById('editQuantityInput').value = quantity;
+    document.getElementById('editUnitSelect').value = unit;
+    
+    document.getElementById('editFormContainer').style.display = 'flex';
+}
+
+document.getElementById('closeEditButton').addEventListener('click', function() {
+    document.getElementById('editFormContainer').style.display = 'none';
+});
+
+document.getElementById('editProductForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const quantityInputValue = document.getElementById('editQuantityInput').value; 
+    const unitInputValue = document.getElementById('editUnitSelect').value; 
+
+    const updatedProduct = {
+        id: currentEditingProductId,
+        quantity: `${quantityInputValue} ${unitInputValue}`
+    };
+
+    updateProductInLocalStorage(updatedProduct);
+    
+    // Обновление таблицы
+    updateProductInTable(updatedProduct);
+
+    document.getElementById('editFormContainer').style.display = 'none';
+});
+
+function updateProductInLocalStorage(updatedProduct) {
+    let productsList = JSON.parse(localStorage.getItem("inventoryProducts")) || [];
+    
+    productsList.forEach(product => {
+        if (product.id === updatedProduct.id) {
+            product.quantity = updatedProduct.quantity;
+        }
+    });
+    
+    localStorage.setItem("inventoryProducts", JSON.stringify(productsList));
+}
+
+function updateProductInTable(updatedProduct) {
+   const rows = document.querySelectorAll('#inventoryBody tr');
+   rows.forEach(row => {
+       const cells = row.querySelectorAll('td');
+       if (cells[3].textContent == updatedProduct.id) { // ID товара
+           cells[2].textContent = updatedProduct.quantity; // Обновляем количество
+       }
+   });
+}
+  
 });
