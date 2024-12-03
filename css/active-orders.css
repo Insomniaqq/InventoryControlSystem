@@ -155,7 +155,7 @@ li {
 }
 
 a {
-  transition: 1s; /* Время эффекта */
+  transition: 1s;
   text-align: center; 
   color: white;
   text-decoration: none;
@@ -316,24 +316,24 @@ h3 {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal-content {
-  background-color: #c4c4c4;
+  background-color: #ffffff;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+  border-radius: 15px;
   width: 80%;
   max-width: 600px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 560px;
-  max-width: 90%;
-  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+  color: #333;
 }
 
 .modal-content table {
@@ -342,14 +342,13 @@ h3 {
 }
 
 .modal-content td {
-  color: #333;
+  color: #555;
   font-size: 16px;
-  padding: 10px;
-  border-bottom: 1px solid #ffffff;
+  padding: 12px;
 }
 
 .modal-content td:first-child {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .close-button {
@@ -361,6 +360,11 @@ h3 {
   position: absolute;
   top: 10px;
   right: 10px;
+  transition: 0.5s;
+}
+
+.close-button:hover {
+  color: #721818;
 }
 
 @media (max-width: 1366px) {

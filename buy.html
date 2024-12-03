@@ -79,57 +79,62 @@
       </tbody>
     </table>
     <div class="form-container" id="formContainer" style="display: none;">
-        <div class="form-container__content">
-          <div class="form-header">
-            <h2>Форма заполнения</h2>
-            <button class="close-button">✖</button>
+      <div class="form-container__content">
+        <div class="form-header">
+          <h2>Форма заполнения</h2>
+          <button class="close-button">✖</button>
+        </div>
+
+        <form id="productForm">
+          <div class="first">
+            <div class="phone">
+              <label>НОМЕР ТЕЛЕФОНА</label>
+              <input type="tel" id="phoneInput" placeholder="Введите номер телефона" required pattern="[0-9]{10}"
+                title="Введите 10 цифр номера телефона">
+            </div>
+            <div class="category">
+              <label>КАТЕГОРИЯ</label>
+              <select id="categorySelect">
+                <option value="">Выберите категорию</option>
+              </select>
+            </div>
+            <div class="name">
+              <label>НАИМЕНОВАНИЕ</label>
+              <select id="nameSelect">
+                <option value="">Выберите наименование</option>
+              </select>
+            </div>
+            <div class="man">
+              <label>ПОСТАВЩИК</label>
+              <select id="supplierSelect">
+                <option value="">Выберите поставщика</option>
+              </select>
+            </div>
           </div>
 
-          <form id="productForm">
-            <div class="first">
-              <div class="category">
-                <label>КАТЕГОРИЯ</label>
-                <select id="categorySelect">
-                  <option value="">Выберите категорию</option>
-                </select>
-              </div>
-              <div class="name">
-                <label>НАИМЕНОВАНИЕ</label>
-                <select id="nameSelect">
-                  <option value="">Выберите наименование</option>
-                </select>
-              </div>
-              <div class="man">
-                <label>ПОСТАВЩИК</label>
-                <select id="supplierSelect">
-                  <option value="">Выберите поставщика</option>
-                </select>
-              </div>
+          <div class="second">
+            <div class="amount">
+              <label>КОЛИЧЕСТВО</label>
+              <input type="number" id="quantityInput" placeholder="" required>
+              <select id="unitSelect">
+                <option value="шт">шт</option>
+                <option value="кг">кг</option>
+                <option value="л">л</option>
+              </select>
             </div>
 
-            <div class="second">
-              <div class="amount">
-                <label>КОЛИЧЕСТВО</label>
-                <input type="number" id="quantityInput" placeholder="" required>
-                <select id="unitSelect">
-                  <option value="шт">шт</option>
-                  <option value="кг">кг</option>
-                  <option value="л">л</option>
-                </select>
-              </div>
-
-              <div class="adress">
-                <label>АДРЕС</label>
-                <input type="text" placeholder="Город" required>
-                <input type="text" placeholder="Улица" required>
-                <input type="text" placeholder="Дом" required>
-              </div>
+            <div class="adress">
+              <label>АДРЕС</label>
+              <input type="text" placeholder="Город" required>
+              <input type="text" placeholder="Улица" required>
+              <input type="text" placeholder="Дом" required>
             </div>
-            <div id="message" style="color: rgb(126, 4, 4);"></div>
-            <div id="errorContainer" style="color: rgb(126, 4, 4); margin: 10px 0;"></div>
-            <button type="submit" class="submit-button">Создать</button>
-          </form>
-        </div>
+          </div>
+          <div id="message" style="color: rgb(126, 4, 4);"></div>
+          <div id="errorContainer" style="color: rgb(126, 4, 4); margin: 10px 0;"></div>
+          <button type="submit" class="submit-button">Создать</button>
+        </form>
+      </div>
     </div>
   </main>
 

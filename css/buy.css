@@ -287,6 +287,7 @@ form label {
 
 form input[type="number"],
 form input[type="text"],
+form input[type="tel"],
 form select {
   width: calc(100% - 16px);
   padding: 10px;
@@ -317,10 +318,15 @@ form select {
 .amount,
 .adress,
 .category,
+.phone,
 .name,
 .man {
   display: flex;
+  padding: 5px;
   flex-direction: column;
   margin-bottom: 10px;
 }
 
+.adress input {
+  margin-top: 10px;
+}

@@ -60,7 +60,6 @@
         <button class="add-button" id="addButton">Добавить товар</button>
         <form class="search-container">
             <input type="search" id="searchInput" placeholder="Поиск по складу...">
-            <button class="search-button" type="submit">Поиск</button>
         </form>
         <table class="table" id="inventoryTable">
             <thead>
@@ -88,19 +87,19 @@
                     <div class="first">
                         <div class="category">
                             <label>КАТЕГОРИЯ</label>
-                            <select id="categorySelect">
+                            <select id="categorySelect" required>
 
                             </select>
                         </div>
                         <div class="name">
                             <label>НАИМЕНОВАНИЕ</label>
-                            <select id="nameSelect">
+                            <select id="nameSelect" required>
 
                             </select>
                         </div>
                         <div class="man">
                             <label>ПОСТАВЩИК</label>
-                            <select id="supplierSelect">
+                            <select id="supplierSelect" required>
 
                             </select>
                         </div>
@@ -109,15 +108,15 @@
                     <div class="second">
                         <div class="amount">
                             <label>КОЛИЧЕСТВО</label>
-                            <input type="number" id="quantityInput" placeholder="">
-                            <select id="unitSelect">
+                            <input type="number" id="quantityInput" placeholder="" required>
+                            <select id="unitSelect" required>
                                 <option value="кг">кг</option>
                                 <option value="шт">шт</option>
                                 <option value="л">л</option>
                             </select>
                         </div>
                     </div>
-
+                    <div id="errorContainer" style="color: red; margin: 10px 0;"></div>
                     <div id="errorContainer" style="color: rgb(126, 4, 4); margin: 10px 0;"></div>
                     <button type="submit" class="submit-button">Добавить</button>
                 </form>
@@ -134,13 +133,14 @@
                     <div class="amount">
                         <label>КОЛИЧЕСТВО</label>
                         <input type="number" id="editQuantityInput" placeholder="">
+                        <label>ЕД.ИЗМЕРЕНИЯ</label>
                         <select id="editUnitSelect">
                             <option value="кг">кг</option>
                             <option value="шт">шт</option>
                             <option value="л">л</option>
                         </select>
                     </div>
-        
+                    <div id="errorContainer" style="color: red; margin: 10px 0;"></div>
                     <div id="editErrorContainer" style="color: rgb(126, 4, 4); margin: 10px 0;"></div>
                     <button type="submit" class="submit-button">Сохранить изменения</button>
                 </form>
