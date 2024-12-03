@@ -14,20 +14,20 @@ document.addEventListener("DOMContentLoaded", function () {
     function loadActiveOrders() {
         const ordersContainer = document.querySelector('.buyers-list');
         ordersContainer.innerHTML = '';
-    
+        
         let orders = JSON.parse(localStorage.getItem('orders')) || [];
-    
+        
         if (orders.length === 0) {
             ordersContainer.style.display = 'none';
             return;
         }
-    
+        
         ordersContainer.style.display = 'block';
-    
+        
         orders.forEach(order => {
             const orderItem = document.createElement('div');
             orderItem.classList.add('buyer-item');
-    
+        
             orderItem.innerHTML = `
                 <div class="item">ЗакупщикID: <span>${currentUser.id}</span></div>
                 <div class="item">ЗаказID: <span>${order.orderID}</span></div>
@@ -35,16 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="item">Статус: <span class="status">${order.status}</span></div>
                 <button class="info-button item">Информация</button>
                 <button class="delete-button item" data-order-id="${order.orderID}">Удалить</button>`;
-    
+        
             orderItem.querySelector('.info-button').addEventListener('click', function () {
                 showOrderDetails(order);
             });
-    
+        
             orderItem.querySelector('.delete-button').addEventListener('click', function (event) {
                 const orderID = event.target.getAttribute('data-order-id');
                 deleteOrder(orderID);
             });
-    
+        
             ordersContainer.appendChild(orderItem);
         });
     }

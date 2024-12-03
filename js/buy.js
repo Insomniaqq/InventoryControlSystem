@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Если все проверки пройдены, можно продолжать обработку данных
+    
     const categoryID = categorySelect.value;
     const orderID = generateOrderID();
     
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function calculateTotalPrice(quantity) {
-    const basePricePerUnit = Math.floor(Math.random() * 1000) + 100; // Примерная цена
+    const basePricePerUnit = Math.floor(Math.random() * 1000) + 100; 
     return basePricePerUnit * quantity;
 }
 

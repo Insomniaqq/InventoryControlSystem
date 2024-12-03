@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             orderItem.querySelector('.delete-button').addEventListener('click', function (event) {
                 const orderID = event.target.getAttribute('data-order-id');
-                deleteOrder(orderID);
+                cancelOrder(orderID); 
             });
 
             orderItem.querySelector('.edit-button').addEventListener('click', function () {
@@ -54,10 +54,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         return;
                     }
 
-                    // Подтверждение заказа
+                    
                     orderToUpdate.status = "Подтверждено";
 
-                    // Отключение кнопки и изменение текста
+                    
                     this.disabled = true;
                     this.textContent = "Подтверждено";
 
@@ -114,25 +114,40 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    function deleteOrder(orderID) {
+    function cancelOrder(orderID) { 
         let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-        const orderToDelete = orders.find(order => order.orderID === orderID);
-        if (orderToDelete) {
-            orderToDelete.status = "Отменен";
-        }
+        
+        const orderToCancel = orders.find(order => order.orderID === orderID);
 
-        localStorage.setItem('orders', JSON.stringify(orders));
-        loadActiveOrders();
+        if (orderToCancel) {
+            orderToCancel.status = "Отменен"; 
+
+            localStorage.setItem('orders', JSON.stringify(orders)); 
+
+            loadActiveOrders(); 
+
+            
+            let canceledOrders = JSON.parse(localStorage.getItem('canceledOrders')) || [];
+            canceledOrders.push({
+                buyerID: currentUser.id,
+                orderID: orderToCancel.orderID,
+                date: orderToCancel.date,
+                status: "Отменен"
+            });
+            localStorage.setItem('canceledOrders', JSON.stringify(canceledOrders));
+
+        }
     }
 
-    const clearButton = document.querySelector('.add-button');
+    
+    const clearButton = document.querySelector('.clear-button');
     if (clearButton) {
         clearButton.addEventListener('click', function () {
-            if (confirm("Вы уверены, что хотите скрыть все активные заказы?")) {
+            if (confirm("Вы уверены, что хотите очистить отображение активных заказов?")) {
                 const ordersContainer = document.querySelector('.buyers-list');
-                ordersContainer.innerHTML = '';
-                ordersContainer.style.display = 'none';
+                ordersContainer.innerHTML = ''; 
+                ordersContainer.style.display = 'none'; 
             }
         });
     }

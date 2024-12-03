@@ -190,7 +190,7 @@ h2 {
   font-weight: bold;
 }
 
-.add-button {
+.clear-button {
   width: 146px;
   margin-bottom: 3px;
   margin-left: 914px;
@@ -203,7 +203,7 @@ h2 {
   font-size: 14px;
   transition: 0.5s;
 }
-.add-button:hover {
+.clear-button:hover {
   background-color: #94653f;
  }
 
