@@ -1,15 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    function loadCurrentUser() {
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        if (!currentUser) {
-            console.error("Данные текущего пользователя недоступны.");
-            return null;
-        }
-        return currentUser;
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser) {
+        window.location.href = "index.html";
     }
-
-    const currentUser = loadCurrentUser();
 
     function loadActiveOrders() {
         const ordersContainer = document.querySelector('.buyers-list');
@@ -55,23 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        document.getElementById('detailId').textContent = order.orderID;
-        document.getElementById('detailClientName').textContent = currentUser.name || "Не указано";
-        document.getElementById('detailPhone').textContent = currentUser.phone || "Не указано";
-        document.getElementById('detailEmail').textContent = currentUser.email || "Не указано";
-
-        const addressParts = order.address.split(', ');
-        document.getElementById('detailCity').textContent = addressParts[0] || 'Не указано';
-        document.getElementById('detailStreet').textContent = addressParts[1] || 'Не указано';
-        document.getElementById('detailHouse').textContent = addressParts[2] || 'Не указано';
-
+        // Заполнение данных в модальном окне
+        document.getElementById('detailId').textContent = order.orderID || "Не указано";
         document.getElementById('detailCategory').textContent = order.category || "Не указано";
         document.getElementById('detailName').textContent = order.name || "Не указано";
         document.getElementById('detailQuantity').textContent = order.quantity || "Не указано";
 
+        const addressParts = order.address ? order.address.split(', ') : [];
+        document.getElementById('detailCity').textContent = addressParts[0] || 'Не указано';
+        document.getElementById('detailStreet').textContent = addressParts[1] || 'Не указано';
+        document.getElementById('detailHouse').textContent = addressParts[2] || 'Не указано';
+
+        // Добавляем отображение номера телефона
+        document.getElementById('detailPhone').textContent = order.phone || "Не указано"; // Отображение номера телефона
+
+        // Открытие модального окна
         const modal = document.getElementById("detailsModal");
         modal.style.display = "block";
 
+        // Закрытие модального окна
         modal.querySelector('.close-button').onclick = function () {
             modal.style.display = "none";
         };
@@ -86,12 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function deleteOrder(orderID) {
         let orders = JSON.parse(localStorage.getItem('orders')) || [];
         
-        
         orders = orders.filter(order => order.orderID !== orderID);
         
-        
         localStorage.setItem('orders', JSON.stringify(orders));
-        
         
         loadActiveOrders();
     }

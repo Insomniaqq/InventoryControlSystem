@@ -134,12 +134,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const addressCity = document.querySelector('.adress input[placeholder="Город"]').value;
     const addressStreet = document.querySelector('.adress input[placeholder="Улица"]').value;
     const addressHouse = document.querySelector('.adress input[placeholder="Дом"]').value;
+    const phoneInputValue = document.getElementById('phoneInput').value; // Получаем значение номера телефона
+
+    if (!phoneInputValue) { // Проверка на заполнение номера телефона
+        displayErrorMessage("Пожалуйста, введите номер телефона.");
+        return;
+    }
 
     if (!categorySelect.value) {
         displayErrorMessage("Пожалуйста, выберите категорию.");
         return;
     }
-    
+
     if (!nameSelect.value) {
         displayErrorMessage("Пожалуйста, выберите наименование.");
         return;
@@ -148,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!suppliers) {
       displayErrorMessage("Пожалуйста, выберите поставщика.");
       return;
-  }
+    }
 
     if (!quantityInputValue || !unit) {
         displayErrorMessage("Пожалуйста, укажите количество и единицу измерения.");
@@ -165,16 +171,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const orderID = generateOrderID();
     
     const orderData = {
-        orderID: orderID,
-        category: jsonData.КатегорииТоваров.find(cat => cat.КатегорияID === categoryID).Категория,
-        name: nameSelect.value,
-        supplier: document.querySelector('.man select').value,
-        quantity: `${quantityInputValue} ${unit}`,
-        totalPrice: calculateTotalPrice(quantityInputValue),
-        address: `${addressCity}, ${addressStreet}, ${addressHouse}`,
-        date: new Date().toLocaleDateString('ru-RU'),
-        status: 'Ожидание'
-    };
+      orderID: orderID,
+      category: jsonData.КатегорииТоваров.find(cat => cat.КатегорияID === categoryID).Категория,
+      name: nameSelect.value,
+      supplier: document.querySelector('.man select').value,
+      quantity: `${quantityInputValue} ${unit}`,
+      totalPrice: calculateTotalPrice(quantityInputValue),
+      address: `${addressCity}, ${addressStreet}, ${addressHouse}`,
+      phone: phoneInputValue, // Добавляем номер телефона
+      date: new Date().toLocaleDateString('ru-RU'),
+      status: 'Ожидание'
+  };
 
     saveOrderToLocalStorage(orderData);
     addRowToTable(orderData);
