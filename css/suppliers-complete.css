@@ -34,6 +34,7 @@
 }
 
 body {
+  background-color: #8895a8;
   font-family: 'Montserrat';
 }
 
@@ -96,15 +97,6 @@ li {
 
 .nav__menu p {
   margin-left: 10px;
-}
-
-.main__container h1 {
-  position: absolute;
-  left: 492px;
-  top: 76px;
-  right: 850px;
-  bottom: 909px;
-  font-weight: 400;
 }
 
 .table {
@@ -174,7 +166,6 @@ a:hover {
   align-items: center;
   width: 855px;
   max-width: 600px;
-  background-color: white;
   padding: 20px;
   border-radius: 8px;
   margin-left: 482px;
@@ -182,16 +173,22 @@ a:hover {
 }
 
 h1 {
+  position: absolute;
+  left: 503px;
+  top: 106px;
   right: 850px;
   bottom: 909px;
+  font-family: "Montserrat";
   font-weight: 400;
+  color: white;
 }
 
 .clear-button {
-  font-family: Montserrat;
+  font-family: "Montserrat";
   width: 146px;
-  margin-left: 847px;
-  margin-bottom: 17px;
+  position: absolute;
+  right: 424px;
+  top: 138px;
   padding: 6px 12px;
   background-color: #c4c4c4;
   color: white;
@@ -201,7 +198,6 @@ h1 {
   font-size: 14px;
   transition: 0.5s;
 }
-
 .clear-button:hover {
   background-color: #333;
  }
@@ -213,6 +209,7 @@ h1 {
 }
 
 .order-row {
+  margin-top: 92px;
   width: 995px;
   height: 39px;
   display: flex;

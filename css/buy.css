@@ -34,6 +34,7 @@
 }
 
 body {
+  background-color: #8895a8;
   font-family: 'Montserrat';
 }
 
@@ -99,12 +100,13 @@ li {
 }
 
 .main__container h1 {
+  font-weight: 400;
+  color: white;
   position: absolute;
   left: 492px;
   top: 76px;
   right: 850px;
   bottom: 909px;
-  font-weight: 400;
 }
 
 .table {
@@ -171,18 +173,10 @@ a:hover {
   filter: sepia(100%) brightness(90%);
 }
 
-.main__container h1 {
-  position: absolute;
-  left: 492px;
-  top: 76px;
-  right: 850px;
-  bottom: 909px;
-  font-weight: 400;
-}
 
 .table {
   position: absolute;
-  width: calc(100% - 440px);
+  width: calc(90% - 440px);
   left: 420px;
   top: 190px;
   right: 0px;
@@ -200,14 +194,16 @@ tbody tr {
 }
 
 thead th {
+  font-weight: 400;
+  font-size: 16px;
   padding: 20px;
   text-align: start;
 }
 
 .create_button {
   font-family: "Montserrat";
-  margin-left: 1600px;
-  margin-top: 80px;
+  margin-left: 1536px;
+  margin-top: 120px;
   background-color: #1e55a8;
   color: white;
   border: none;

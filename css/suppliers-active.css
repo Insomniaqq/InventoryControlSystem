@@ -34,6 +34,7 @@
 }
 
 body {
+  background-color: #8895a8;
   font-family: 'Montserrat';
 }
 
@@ -95,12 +96,13 @@ li {
 }
 
 .main__container h1 {
+  font-weight: 400;
+  color: white;
   position: absolute;
   left: 492px;
-  top: 76px;
+  top: 103px;
   right: 850px;
   bottom: 909px;
-  font-weight: 400;
 }
 
 .table {
@@ -166,15 +168,6 @@ a:hover {
   filter: sepia(100%) brightness(90%);
 }
 
-.main__container h1 {
-  position: absolute;
-  left: 492px;
-  top: 76px;
-  right: 850px;
-  bottom: 909px;
-  font-weight: 400;
-}
-
 .main__container h2 {
   position: absolute;
   left: 630px;
@@ -194,7 +187,7 @@ h2 {
   font-family: Montserrat;
   width: 146px;
   margin-bottom: 3px;
-  margin-left: 1130px;
+  margin-left: 1051px;
   padding: 6px 12px;
   background-color: #c4c4c4;
   color: white;
@@ -209,6 +202,7 @@ h2 {
  }
 
 .buyers-list {
+  margin-left: -80px;
   margin-top: 20px;
   width: calc(85vw - 470px);
 }

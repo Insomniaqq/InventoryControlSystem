@@ -40,6 +40,7 @@
 }
 
 body {
+  background-color: #8895a8;
   font-family: 'Montserrat';
 }
 
@@ -95,15 +96,18 @@ li {
 }
 
 .main__container h1 {
+  font-weight: 400;
+  color: white;
   position: absolute;
   left: 492px;
   top: 76px;
   right: 850px;
   bottom: 909px;
-  font-weight: 400;
 }
 
 thead th {
+  font-weight: 400;
+  font-size: 16px;
   padding: 20px;
   text-align: start;
 }

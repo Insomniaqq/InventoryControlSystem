@@ -34,6 +34,7 @@
 }
 
 body {
+  background-color: #8895a8;
   font-family: 'Montserrat';
 }
 
@@ -95,12 +96,13 @@ li {
 }
 
 .main__container h1 {
+  font-weight: 400;
+  color: white;
   position: absolute;
   left: 492px;
   top: 76px;
   right: 850px;
   bottom: 909px;
-  font-weight: 400;
 }
 
 li {
@@ -125,15 +127,6 @@ a:hover {
   filter: sepia(100%) brightness(90%);
 }
 
-.main__container h1 {
-  position: absolute;
-  left: 492px;
-  top: 76px;
-  right: 850px;
-  bottom: 909px;
-  font-weight: 400;
-}
-
 .main__container h2 {
   position: absolute;
   left: 630px;
@@ -145,28 +138,30 @@ a:hover {
 }
 
 .table {
+  background-color: white;
 	position: absolute;
   width: calc(100% - 440px);
   left: 420px;
   top: 190px;
   right: 0px;
   bottom: 779px;
-	border: none;
 }
 .table thead th {
+  color: white;
 	font-weight: bold;
 	text-align: left;
 	border: none;
 	padding: 10px 15px;
-	background: #d8d8d8;
+	background: #1e55a8;
 	font-size: 14px;
 	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
+	border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
 }
 .table tbody td {
 	text-align: left;
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #ffffff;
 	padding: 10px 15px;
 	font-size: 14px;
 	vertical-align: top;
@@ -178,5 +173,5 @@ a:hover {
 	border-right: none;
 }
 .table tbody tr:nth-child(even){
-	background: #f3f3f3;
+	background: #ffffff;
 }
