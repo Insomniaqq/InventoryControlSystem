@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Заполнение данных в модальном окне
+        
         document.getElementById('detailId').textContent = order.orderID || "Не указано";
         document.getElementById('detailCategory').textContent = order.category || "Не указано";
         document.getElementById('detailName').textContent = order.name || "Не указано";
@@ -59,14 +59,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('detailStreet').textContent = addressParts[1] || 'Не указано';
         document.getElementById('detailHouse').textContent = addressParts[2] || 'Не указано';
 
-        // Добавляем отображение номера телефона
-        document.getElementById('detailPhone').textContent = order.phone || "Не указано"; // Отображение номера телефона
+        
+        document.getElementById('detailPhone').textContent = order.phone || "Не указано"; 
 
-        // Открытие модального окна
+        
         const modal = document.getElementById("detailsModal");
         modal.style.display = "block";
 
-        // Закрытие модального окна
+        
         modal.querySelector('.close-button').onclick = function () {
             modal.style.display = "none";
         };
