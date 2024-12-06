@@ -361,3 +361,19 @@ h3 {
 .close-button:hover {
   color: #721818;
 }
+
+@media (max-width: 1366px) {
+  /* .main__container{
+    margin-left: 170px;
+  } */
+   .buyers-list{
+    width: 130%;
+    margin-left: -100px;
+   }
+  .buyer-item .item {
+    font-size: 12px;
+  }
+  .clear-button{
+    margin-left: 560px;
+  }
+}

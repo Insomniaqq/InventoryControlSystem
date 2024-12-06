@@ -384,3 +384,17 @@ input:focus {
 .search-button:hover {
   background-color: #94653f;
 }
+
+@media (max-width: 1366px) {
+  .table{
+    margin-top: 210px;
+    width: 60%;
+  }
+  thead th{
+    font-size: 16px;
+  }
+
+  tbody tr{
+    font-size: 16px;
+  }
+}

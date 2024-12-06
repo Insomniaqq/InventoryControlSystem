@@ -230,3 +230,18 @@ h1 {
 .order-row span {
   font-weight: bold;
 }
+
+@media (max-width: 1366px) {
+  /* .main__container{
+    margin-left: 170px;
+  } */
+   .order-row{
+    width: 130%;
+   }
+  .buyer-item .item {
+    font-size: 12px;
+  }
+  .clear-button{
+    margin-left: 580px;
+  }
+}

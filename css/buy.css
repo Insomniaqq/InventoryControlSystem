@@ -330,3 +330,24 @@ form select {
 .adress input {
   margin-top: 10px;
 }
+
+@media (max-width: 1366px) {
+  *{
+
+    overflow-y: auto;
+  }
+  thead th {
+    font-size: 16px;
+  }
+  tbody td{
+    font-size: 16px;
+  }
+  .create_button {
+    margin-left: 1100px;
+  }
+  .form-container__content{
+    max-height: none;
+    height: auto;
+    transform: scale(0.9);
+  }
+}
