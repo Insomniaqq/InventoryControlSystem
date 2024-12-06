@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const orderRow = document.createElement('div');
             orderRow.classList.add('order-row');
             orderRow.innerHTML = `
-                <div>Закупщик ID: <span>${order.buyerID}</span></div>
+                <div>Поставщик ID: <span>${order.buyerID}</span></div>
                 <div>Заказ ID: <span>${order.orderID}</span></div>
                 <div>Дата: <span>${order.date}</span></div>
                 <div>Статус: <span>Выполнено</span></div>`;

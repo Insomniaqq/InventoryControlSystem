@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             orderItem.classList.add('buyer-item');
 
             orderItem.innerHTML = `
-                <div class="item">ЗакупщикID: <span>${currentUser.id}</span></div>
+                <div class="item">ПоставщикID: <span>${currentUser.id}</span></div>
                 <div class="item">ЗаказID: <span>${order.orderID}</span></div>
                 <div class="item">Дата: <span>${order.date}</span></div>
                 <div class="item">Статус: <span class="status">${order.status}</span></div>
