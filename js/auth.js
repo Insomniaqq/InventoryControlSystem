@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             
             if (!authenticated) {
-                messageDiv.textContent = "Неправильный логин или пароль. Попробуйте снова.";
+                messageDiv.textContent = "Неправильный логин или пароль.";
             }
         });
     } else {

@@ -11,9 +11,7 @@
     <link rel="manifest" href="favicons/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
     <title>Система управления складом - Вход</title>
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/auth.js"></script>
@@ -26,14 +24,14 @@
         </div>
         <div class="right">
             <h2>Вход</h2>
-            <div id="message" style="color: rgb(126, 4, 4);"></div>
+            
             <form id="authForm">
                 <label for="login">Логин</label>
                 <input type="text" id="login" maxlength="15" name="login" placeholder="Введите логин" required>
 
                 <label for="password">Пароль</label>
                 <input type="password" id="password" maxlength="15" name="password" placeholder="Введите пароль" required>
-
+                <div id="message" style="color: rgb(126, 4, 4);" style="padding-bottom: 20px;"></div><br>
                 <button id="button" type="button">Войти</button>
             </form>
         </div>

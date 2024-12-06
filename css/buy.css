@@ -1,40 +1,40 @@
 @font-face {
-  font-family: "Inter-Regular";
-  src: url("../fonts/Inter-Regular.otf");
+  font-family: "Montserrat-Regular";
+  src: url("../fonts/Montserrat-Regular.otf");
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "Inter-Bold";
-  src: url("../fonts/Inter-Bold.otf");
+  font-family: "Montserrat-Bold";
+  src: url("../fonts/Montserrat-Bold.otf");
   font-style: bold;
   font-weight: bold;
 }
 
 @font-face {
-  font-family: "Inter-Light";
-  src: url("../fonts/Inter-Light.otf");
+  font-family: "Montserrat-Light";
+  src: url("../fonts/Montserrat-Light.otf");
   font-style: normal;
   font-weight: lighter;
 }
 
 @font-face {
-  font-family: "Inter-Medium";
-  src: url("../fonts/Inter-Medium.otf");
+  font-family: "Montserrat-Medium";
+  src: url("../fonts/Montserrat-Medium.otf");
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "Inter-SemiBold";
-  src: url("../fonts/Inter-SemiBold.otf");
+  font-family: "Montserrat-SemiBold";
+  src: url("../fonts/Montserrat-SemiBold.otf");
   font-style: normal;
   font-weight: normal;
 }
 
 body {
-  font-family: 'Inter';
+  font-family: 'Montserrat';
 }
 
 * {
@@ -48,7 +48,7 @@ body {
 }
 
 .menu {
-  background-color: #F09B57;
+  background-color: #1e55a8;
   position: fixed;
   top: 0;
   left: 0;
@@ -60,7 +60,7 @@ body {
 }
 
 .user_id {
-  font-family: "Inter";
+  font-family: "Montserrat";
   font-weight: lighter;
   font-size: 20px;
 }
@@ -125,7 +125,7 @@ tbody td {
 tbody th {
   padding: 20px;
   text-align: start;
-  font-family: "Inter-Light";
+  font-family: "Montserrat-Light";
   font-weight: lighter;
 }
 
@@ -136,14 +136,14 @@ thead th {
 
 table thead {
   color: white;
-  background-color: #F09B57;
-  font-family: "Inter-Bold";
+  background-color: #1e55a8;
+  font-family: "Montserrat-Bold";
   font-weight: bold;
   font-size: 23px;
 }
 
 table tbody {
-  font-family: "Inter-Light";
+  font-family: "Montserrat-Light";
   font-size: 18px;
   font-weight: lighter;
   font-style: normal;
@@ -205,9 +205,10 @@ thead th {
 }
 
 .create_button {
+  font-family: "Montserrat";
   margin-left: 1600px;
   margin-top: 80px;
-  background-color: #F09B57;
+  background-color: #1e55a8;
   color: white;
   border: none;
   width: 172px;
@@ -219,7 +220,7 @@ thead th {
 }
 
 .create_button:hover {
-  background-color: #94653f;
+  background-color: #17263d;
  }
 
 
@@ -241,7 +242,7 @@ thead th {
   width: 569px;
   height: auto;
   max-height: 80%;
-  background-color: #F09B57;
+  background-color: #1e55a8;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -279,7 +280,7 @@ form {
 
 form label {
   color: white;
-  font-family: "Inter";
+  font-family: "Montserrat";
   font-size: 12px;
   letter-spacing: .2rem;
   font-weight: bold;
@@ -289,6 +290,7 @@ form input[type="number"],
 form input[type="text"],
 form input[type="tel"],
 form select {
+  font-family: "Montserrat";
   width: calc(100% - 16px);
   padding: 10px;
   font-size: 14px;
@@ -298,6 +300,7 @@ form select {
 }
 
 .submit-button {
+  font-family: "Montserrat";
   margin-left: auto;
   margin-right: auto;
   font-size: 16px;
@@ -308,7 +311,7 @@ form select {
   border-radius: 4px;
   cursor: pointer;
   width: 160px;
-  height: 60px;
+  height: 40px;
   transition: 0.5s;
 }
 .submit-button:hover {

@@ -1,12 +1,13 @@
 * {
+    font-family: 'Montserrat';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #e7c1a3;
+    font-family: 'Montserrat';
+    background-color: #505050;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,13 +18,13 @@ body {
     display: flex;
     width: 1021px;
     height: 725px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
 .left {
-    background-color: #F09B57;
+    background-color: #1e55a8;
     width: 50%;
     display: flex;
     justify-content: center;
@@ -91,7 +92,7 @@ button {
     width: 338px;
     height: 56px;
     padding: 10px;
-    background-color: #F09B57;
+    background-color: #1e55a8;
     color: white;
     border: none;
     border-radius: 5px;
@@ -104,7 +105,7 @@ button {
 }
 
 button:hover {
-    background-color: #b47643;
+    background-color: #17263d;
     font-weight: normal;
 }
 

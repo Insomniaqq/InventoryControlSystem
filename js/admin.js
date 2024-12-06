@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div>Пароль: <span>${supplier.password}</span></div>
             <div>Телефон: <span>${supplier.phone}</span></div>
             <div>Почта: <span>${supplier.email}</span></div>
-            <button class="delete-button"><img src="img/Delete.svg" alt="delete"></button>
+            <button class="delete-button">✖</button>
         `;
         buyersList.appendChild(buyerItem);
         
