@@ -110,16 +110,13 @@ li {
 }
 
 tbody td {
-  padding: 20px;
-
+  padding: 10px; /* Уменьшено с 20px до 10px */
 }
 
 tbody th {
-  padding: 20px;
-  text-align: start;
-  font-family: "Montserrat-Light";
-  font-weight: lighter;
+  padding: 10px; /* Уменьшено с 20px до 10px */
 }
+
 
 thead th {
   padding: 20px;
@@ -175,7 +172,7 @@ a:hover {
 h1 {
   position: absolute;
   left: 503px;
-  top: 106px;
+  top: 50px;
   right: 850px;
   bottom: 909px;
   font-family: "Montserrat";
@@ -188,7 +185,7 @@ h1 {
   width: 146px;
   position: absolute;
   right: 424px;
-  top: 138px;
+  top: 50px;
   padding: 6px 12px;
   background-color: #c4c4c4;
   color: white;
@@ -205,18 +202,17 @@ h1 {
 .order-table {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .order-row {
-  margin-top: 92px;
+  margin-top: 20px; /* Уменьшено с 92px до 20px */
   width: 995px;
-  height: 39px;
+  height: auto; /* Установите auto, чтобы высота автоматически подстраивалась под содержимое */
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #e0e0e0;
-  padding: 10px;
+  padding: 5px; /* Уменьшено с 10px до 5px */
   border-radius: 6px;
 }
 
@@ -226,7 +222,7 @@ h1 {
 }
 
 .order-row span {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 @media (max-width: 1366px) {

@@ -272,7 +272,7 @@ h3 {
   position: relative;
   background-color: transparent;
   border: none;
-  cursor: poMontserrat;
+  cursor: pointer;
   font-size: 16px;
   color: #333;
 }
