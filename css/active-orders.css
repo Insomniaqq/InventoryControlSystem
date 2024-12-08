@@ -169,10 +169,6 @@ a:hover {
   filter: sepia(100%) brightness(90%);
 }
 
-.admin {
-  margin-left: 56px;
-}
-
 .main__container h2 {
   position: absolute;
   left: 630px;
