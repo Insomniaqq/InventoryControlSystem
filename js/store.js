@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
     function loadProductsFromLocalStorage() {
-        const productsList = JSON.parse(localStorage.getItem("inventoryProductsSuppliers")) || [];
+        const productsList = JSON.parse(localStorage.getItem("inventoryProductsBuyers")) || [];
         
         if (productsList.length === 0) {
             displayEmptyMessage();
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       function updateProductInLocalStorage(updatedProduct) {
-          let productsList = JSON.parse(localStorage.getItem("inventoryProductsSuppliers")) || [];
+          let productsList = JSON.parse(localStorage.getItem("inventoryProductsBuyers")) || [];
           
           productsList.forEach(product => {
               if (product.id === updatedProduct.id) {
@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
               }
           });
           
-          localStorage.setItem("inventoryProductsSuppliers", JSON.stringify(productsList));
+          localStorage.setItem("inventoryProductsBuyers", JSON.stringify(productsList));
       }
 
       function updateProductInTable(updatedProduct) {
@@ -303,17 +303,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       
       function saveProductToLocalStorage(product) {
-          let productsList=JSON.parse(localStorage.getItem ("inventoryProductsSuppliers")) || [];
+          let productsList=JSON.parse(localStorage.getItem ("inventoryProductsBuyers")) || [];
           productsList.push(product);
-          localStorage.setItem ("inventoryProductsSuppliers", JSON.stringify(productsList));
+          localStorage.setItem ("inventoryProductsBuyers", JSON.stringify(productsList));
       }
 
       
       function removeProductFromLocalStorage(productId) {
-          let productsList=JSON.parse(localStorage.getItem ("inventoryProductsSuppliers")) || [];
+          let productsList=JSON.parse(localStorage.getItem ("inventoryProductsBuyers")) || [];
           productsList=productsList.filter(product => product.id !== productId);
           
-          localStorage.setItem ("inventoryProductsSuppliers", JSON.stringify(productsList));
+          localStorage.setItem ("inventoryProductsBuyers", JSON.stringify(productsList));
           
           if(productsList.length===0){
                displayEmptyMessage(); 

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const ordersContainer = document.querySelector('.buyers-list');
         ordersContainer.innerHTML = '';
 
-        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        let orders = JSON.parse(localStorage.getItem('ordersList')) || [];
 
         if (orders.length === 0) {
             ordersContainer.style.display = 'none';
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         ordersContainer.style.display = 'block';
-
+        console.log(orders);
         orders.forEach(order => {
             const orderItem = document.createElement('div');
             orderItem.classList.add('buyer-item');
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             orderItem.querySelector('.edit-button').addEventListener('click', function () {
-                let orders = JSON.parse(localStorage.getItem('orders')) || [];
+                let orders = JSON.parse(localStorage.getItem('ordersList')) || [];
                 const orderToUpdate = orders.find(o => o.orderID === order.orderID);
 
                 if (orderToUpdate) {
@@ -61,7 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     this.disabled = true;
                     this.textContent = "Подтверждено";
 
+                    localStorage.setItem('ordersList', JSON.stringify(orders));
                     localStorage.setItem('orders', JSON.stringify(orders));
+
 
                     let completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
                     completedOrders.push({
@@ -117,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function cancelOrder(orderID) { 
-        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        let orders = JSON.parse(localStorage.getItem('ordersList')) || [];
 
         
         const orderToCancel = orders.find(order => order.orderID === orderID);
@@ -125,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (orderToCancel) {
             orderToCancel.status = "Отменен"; 
 
+            localStorage.setItem('ordersList', JSON.stringify(orders));
             localStorage.setItem('orders', JSON.stringify(orders)); 
 
             loadActiveOrders(); 
@@ -147,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (clearButton) {
         clearButton.addEventListener('click', function () {
             if (confirm("Вы уверены, что хотите очистить отображение активных заказов?")) {
+                localStorage.removeItem('ordersList');
                 const ordersContainer = document.querySelector('.buyers-list');
                 ordersContainer.innerHTML = ''; 
                 ordersContainer.style.display = 'none'; 

@@ -184,6 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
     saveOrderToLocalStorage(orderData);
+    saveOrderList(orderData);
     addRowToTable(orderData);
     formContainer.style.display = 'none';
 
@@ -219,6 +220,12 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem('orders', JSON.stringify(orders));
   }
 
+  function saveOrderList(order) {
+    let ordersList = JSON.parse(localStorage.getItem('ordersList')) || [];
+    ordersList.push(order);
+    localStorage.setItem('ordersList', JSON.stringify(ordersList));
+  }
+
   function addRowToTable(order) {
     const newRow = tableBody.insertRow();
     newRow.insertCell(0).textContent = order.category;
@@ -231,6 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   loadOrdersFromLocalStorage();
+  loadOrdersList();
 
   function loadOrdersFromLocalStorage() {
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -238,5 +246,9 @@ document.addEventListener("DOMContentLoaded", function () {
     orders.forEach(order => {
       addRowToTable(order);
     });
+  }
+
+  function loadOrdersList() {
+    let ordersList = JSON.parse(localStorage.getItem('ordersList')) || [];
   }
 });

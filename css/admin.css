@@ -209,10 +209,6 @@ table thead {
   border-bottom: 2px solid black;
 }
 
-.admin {
-  margin-left: 56px;
-}
-
 .admin-container {
   width: 80%;
   max-width: 600px;

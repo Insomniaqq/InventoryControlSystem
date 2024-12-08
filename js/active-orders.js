@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         orders = orders.filter(order => order.orderID !== orderID);
         
         localStorage.setItem('orders', JSON.stringify(orders));
+        localStorage.setItem('ordersList', JSON.stringify(orders));
         
         loadActiveOrders();
     }
