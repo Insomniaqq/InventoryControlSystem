@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         messageCell.colSpan = 5; 
         messageCell.textContent = 'Вы еще не добавляли товары на склад';
         messageCell.style.textAlign = 'center'; 
-        messageCell.style.color = 'grey';
+        messageCell.style.color = 'white';
         messageCell.style.padding = '20px'; 
         
         messageRow.appendChild(messageCell);

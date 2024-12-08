@@ -136,6 +136,10 @@ tbody td {
   padding: 0 20px;
 }
 
+tbody th {
+  font-weight: 400;
+}
+
 li {
   text-decoration: none;
   display: flex;
@@ -148,8 +152,7 @@ li {
 
 a {
   transition: 1s;
-  /* Время эффекта */
-  text-align: center;
+  text-align: center; 
   color: white;
   text-decoration: none;
 }
@@ -291,7 +294,6 @@ form select {
   height: 40px;
   transition: 0.5s;
 }
-
 .submit-button:hover {
   background-color: #a0a0a0;
 }
@@ -353,14 +355,11 @@ form select {
   right: 113px;
   width: 600px;
 }
-
-.search-button,
-input {
+.search-button, input {
   border: none;
   outline: none;
   border-radius: 3px;
 }
-
 #searchInput {
   color: #000000;
 }
@@ -384,16 +383,15 @@ input:focus {
 }
 
 @media (max-width: 1366px) {
-  .table {
+  .table{
     margin-top: 210px;
     width: 60%;
   }
-
-  thead th {
+  thead th{
     font-size: 16px;
   }
 
-  tbody tr {
+  tbody tr{
     font-size: 16px;
   }
 }
