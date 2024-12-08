@@ -55,17 +55,17 @@
     <button class="clear-button">Очистить</button>
     <div class="orders-container">
         <h1>Заказ отправлен</h1>
-        
+
         <div class="order-table">
         </div>
     </div>
-    
+
 
     <script>
 
         const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        if (!currentUser) {
 
+        if (!currentUser || currentUser.role !== "Поставщик") {
             window.location.href = "index.html";
         }
     </script>

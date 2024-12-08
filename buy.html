@@ -51,8 +51,8 @@
         </li>
         <li>
           <a class="admin" href="admin.html"><img class="admin-img" src="img/user-list.svg" alt="admin">
-              Администратор</a>
-      </li>
+            Администратор</a>
+        </li>
       </ul>
     </aside>
   </div>
@@ -138,8 +138,8 @@
   <script>
 
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (!currentUser) {
 
+    if (!currentUser || currentUser.role !== "Закупщик") {
       window.location.href = "index.html";
     }
   </script>
