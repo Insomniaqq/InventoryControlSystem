@@ -147,8 +147,9 @@ li {
 }
 
 a {
-  transition: 1s; /* Время эффекта */
-  text-align: center; 
+  transition: 1s;
+  /* Время эффекта */
+  text-align: center;
   color: white;
   text-decoration: none;
 }
@@ -182,9 +183,9 @@ tbody th {
 .add-button {
   font-family: Montserrat;
   width: 165px;
-  height: 50px;
+  height: 36px;
   position: absolute;
-  top: 92px;
+  top: 125px;
   right: 113px;
   padding: 6px 12px;
   background-color: #1e55a8;
@@ -195,9 +196,10 @@ tbody th {
   font-size: 16px;
   transition: 0.5s;
 }
+
 .add-button:hover {
   background-color: #17263d;
- }
+}
 
 .form-container {
   display: flex;
@@ -289,6 +291,7 @@ form select {
   height: 40px;
   transition: 0.5s;
 }
+
 .submit-button:hover {
   background-color: #a0a0a0;
 }
@@ -350,11 +353,14 @@ form select {
   right: 113px;
   width: 600px;
 }
-.search-button, input {
+
+.search-button,
+input {
   border: none;
   outline: none;
   border-radius: 3px;
 }
+
 #searchInput {
   color: #000000;
 }
@@ -378,15 +384,16 @@ input:focus {
 }
 
 @media (max-width: 1366px) {
-  .table{
+  .table {
     margin-top: 210px;
     width: 60%;
   }
-  thead th{
+
+  thead th {
     font-size: 16px;
   }
 
-  tbody tr{
+  tbody tr {
     font-size: 16px;
   }
 }

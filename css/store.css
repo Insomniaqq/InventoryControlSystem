@@ -161,8 +161,9 @@ li {
 }
 
 a {
-  transition: 1s; /* Время эффекта */
-  text-align: center; 
+  transition: 1s;
+  /* Время эффекта */
+  text-align: center;
   color: white;
   text-decoration: none;
 }
@@ -219,9 +220,10 @@ tbody td {
   font-size: 16px;
   transition: 0.5s;
 }
+
 .add-button:hover {
   background-color: #17263d;
- }
+}
 
 .form-container {
   display: flex;
@@ -313,9 +315,11 @@ form select {
   height: 40px;
   transition: 0.5s;
 }
+
 .submit-button:hover {
   background-color: #a0a0a0;
 }
+
 .admin {
   margin-left: 56px;
 }
@@ -373,11 +377,14 @@ form select {
   right: 113px;
   width: 600px;
 }
-.search-button, input {
+
+.search-button,
+input {
   border: none;
   outline: none;
   border-radius: 3px;
 }
+
 #searchInput {
   color: #000000;
   border-radius: 5px;
@@ -413,15 +420,16 @@ input:focus {
 
 
 @media (max-width: 1366px) {
-  .table{
+  .table {
     margin-top: 210px;
     width: 60%;
   }
-  thead th{
+
+  thead th {
     font-size: 16px;
   }
 
-  tbody tr{
+  tbody tr {
     font-size: 16px;
   }
 }
