@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const jsonData = {
         "КатегорииТоваров": [
             { "КатегорияID": "1", "Категория": "Метал.добавки", "Вещества": [{ "Наименование": "Ферромарганец", "Поставщик": "ООО Металлург" }, { "Наименование": "Силикокальций", "Поставщик": "ООО Металлург" }] },
-            { "КатегорияID": "2", "Категория": "Горючие вещества", "Вещества": [{ "Наименование": "Бензин", "Поставщик": "ИП Горючева" }, { "Наименование": "Керосин", "Поставщик": "ИП Горючева" }, ] },
+            { "КатегорияID": "2", "Категория": "Горючие вещества", "Вещества": [{ "Наименование": "Бензин", "Поставщик": "ИП Горючева" }, { "Наименование": "Керосин", "Поставщик": "ИП Горючева" },] },
             { "КатегорияID": "3", "Категория": "Хим.реактивы и окислители", "Вещества": [{ "Наименование": "Перекись водорода", "Поставщик": "ООО Химреактив" }, { "Наименование": "Нитрат аммония", "Поставщик": "ООО Химреактив" }, { "Наименование": "Натрий хлорид", "Поставщик": "ООО Химреактив" }, { "Наименование": "Серная кислота", "Поставщик": "ООО Химреактив" }, { "Наименование": "Уксусная кислота", "Поставщик": "ООО Химреактив" }] },
             { "КатегорияID": "4", "Категория": "Связующие вещества", "Вещества": [{ "Наименование": "Эпоксидная смола", "Поставщик": "ООО Полимер" }, { "Наименование": "Клей ПВА", "Поставщик": "ООО Полимер" }] },
             { "КатегорияID": "5", "Категория": "Конструкционные материалы", "Вещества": [{ "Наименование": "Арматура", "Поставщик": "ИП Стройматериалы" }, { "Наименование": "Металлопрофиль", "Поставщик": "ИП Стройматериалы" }, { "Наименование": "Цемент", "Поставщик": "ИП Стройматериалы" }, { "Наименование": "Песок", "Поставщик": "ИП Стройматериалы" }, { "Наименование": "Щебень", "Поставщик": "ИП Стройматериалы" }] }
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ]
     };
 
-    
+
     function populateForm() {
         const categorySelect = document.querySelector('.category select');
         const nameSelect = document.querySelector('.name select');
@@ -88,20 +88,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     populateForm();
 
-    
+
     document.getElementById('addButton').addEventListener('click', function () {
         document.getElementById('formContainer-store').style.display = 'flex';
     });
 
-    
+
     document.querySelector('.close-button').addEventListener('click', function () {
         document.getElementById('formContainer-store').style.display = 'none';
     });
 
-    
+
     function loadProductsFromLocalStorage() {
         const productsList = JSON.parse(localStorage.getItem("inventoryProductsBuyers")) || [];
-        
+
         if (productsList.length === 0) {
             displayEmptyMessage();
         } else {
@@ -111,224 +111,227 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    
+
     function displayEmptyMessage() {
         const inventoryBody = document.getElementById('inventoryBody');
         const messageRow = document.createElement('tr');
         const messageCell = document.createElement('td');
-        
-        messageCell.colSpan = 5; 
+
+        messageCell.colSpan = 5;
         messageCell.textContent = 'Вы еще не добавляли товары на склад';
-        messageCell.style.textAlign = 'center'; 
+        messageCell.style.textAlign = 'center';
         messageCell.style.color = 'white';
-        messageCell.style.padding = '20px'; 
-        
+        messageCell.style.padding = '20px';
+
         messageRow.appendChild(messageCell);
         inventoryBody.appendChild(messageRow);
     }
 
-    
+
     function addProductToTable(product) {
         const inventoryBody = document.getElementById('inventoryBody');
-        
-        
+
+
         if (inventoryBody.querySelector('tr td') && inventoryBody.querySelector('tr td').textContent === 'Вы еще не добавляли товары на склад') {
-             inventoryBody.innerHTML = ''; 
-         }
+            inventoryBody.innerHTML = '';
+        }
 
-         const newRow = document.createElement('tr');
+        const newRow = document.createElement('tr');
 
-         const categoryCell = document.createElement('th');
-         categoryCell.scope = 'row';
-         categoryCell.textContent = product.category;
+        const categoryCell = document.createElement('th');
+        categoryCell.scope = 'row';
+        categoryCell.textContent = product.category;
 
-         const nameCell = document.createElement('td');
-         nameCell.textContent = product.name;
+        const nameCell = document.createElement('td');
+        nameCell.textContent = product.name;
 
-         const quantityCell = document.createElement('td');
-         quantityCell.textContent = product.quantity;
+        const quantityCell = document.createElement('td');
+        quantityCell.textContent = product.quantity;
 
-         const idCell = document.createElement('td');
-         idCell.textContent = product.id;
+        const idCell = document.createElement('td');
+        idCell.textContent = product.id;
 
-         const actionsCell = document.createElement('td');
+        const actionsCell = document.createElement('td');
 
-         
-         const editButton = document.createElement('button');
-         editButton.className = 'edit-button';
-         editButton.textContent = '✎';
-         
-         editButton.addEventListener('click', function () {
-             openEditForm(product);
-         });
 
-         actionsCell.appendChild(editButton);
+        const editButton = document.createElement('button');
+        editButton.className = 'edit-button';
+        editButton.textContent = '✎';
 
-         
-         const deleteButton = document.createElement('button');
-         deleteButton.className = 'delete-button';
-         
-         deleteButton.textContent = '✖';
-         deleteButton.addEventListener('click', function () {
-             inventoryBody.removeChild(newRow);
-             removeProductFromLocalStorage(product.id);
-             if (inventoryBody.children.length === 0) displayEmptyMessage(); 
-         });
+        editButton.addEventListener('click', function () {
+            openEditForm(product);
+        });
 
-         actionsCell.appendChild(deleteButton);
+        actionsCell.appendChild(editButton);
 
-         newRow.appendChild(categoryCell);
-         newRow.appendChild(nameCell);
-         newRow.appendChild(quantityCell);
-         newRow.appendChild(idCell);
-         newRow.appendChild(actionsCell);
 
-         inventoryBody.appendChild(newRow);
-     }
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'delete-button';
 
-     loadProductsFromLocalStorage(); 
+        deleteButton.textContent = '✖';
+        deleteButton.addEventListener('click', function () {
+            inventoryBody.removeChild(newRow);
+            removeProductFromLocalStorage(product.id);
+            if (inventoryBody.children.length === 0) displayEmptyMessage();
+        });
 
-     
-     function openEditForm(product) {
-         currentEditingProductId = product.id;
+        actionsCell.appendChild(deleteButton);
 
-         
-         const [quantity, unit] = product.quantity.split(' ');
-         
-         document.getElementById('editQuantityInput').value = quantity;
-         document.getElementById('editUnitSelect').value = unit;
+        newRow.appendChild(categoryCell);
+        newRow.appendChild(nameCell);
+        newRow.appendChild(quantityCell);
+        newRow.appendChild(idCell);
+        newRow.appendChild(actionsCell);
 
-         
-         document.getElementById('editFormContainer').style.display = 'flex';
-     }
+        inventoryBody.appendChild(newRow);
+    }
 
-     
-     document.getElementById('closeEditButton').addEventListener('click', function () {
-          document.getElementById('editFormContainer').style.display = 'none';
-     });
+    loadProductsFromLocalStorage();
 
-     
-     document.getElementById('editProductForm').addEventListener('submit', function (event) {
-          event.preventDefault();
 
-          const quantityInputValue = document.getElementById('editQuantityInput').value;
-          const unitInputValue = document.getElementById('editUnitSelect').value;
+    function openEditForm(product) {
+        currentEditingProductId = product.id;
 
-          const updatedProduct = {
-              id: currentEditingProductId,
-              quantity: `${quantityInputValue} ${unitInputValue}`
-          };
 
-          updateProductInLocalStorage(updatedProduct);
-          updateProductInTable(updatedProduct);
+        const [quantity, unit] = product.quantity.split(' ');
 
-          document.getElementById('editFormContainer').style.display = 'none';
-      });
+        document.getElementById('editQuantityInput').value = quantity;
+        document.getElementById('editUnitSelect').value = unit;
 
-      function updateProductInLocalStorage(updatedProduct) {
-          let productsList = JSON.parse(localStorage.getItem("inventoryProductsBuyers")) || [];
-          
-          productsList.forEach(product => {
-              if (product.id === updatedProduct.id) {
-                  product.quantity = updatedProduct.quantity; 
-              }
-          });
-          
-          localStorage.setItem("inventoryProductsBuyers", JSON.stringify(productsList));
-      }
 
-      function updateProductInTable(updatedProduct) {
-          const rows = document.querySelectorAll('#inventoryBody tr');
-          rows.forEach(row => {
-              const cells = row.querySelectorAll('td');
-              if (cells[3].textContent == updatedProduct.id) { 
-                  cells[2].textContent= updatedProduct.quantity; 
-              }
-          });
-      }
+        document.getElementById('editFormContainer').style.display = 'flex';
+    }
 
-      
-      function validateForm(formId) {
-          const form=document.getElementById(formId);
-          const inputs=form.querySelectorAll ('input[required], select[required]');
-          let valid=true;
 
-          
-          const errorContainer=document.getElementById ('errorContainer');
-          errorContainer.innerHTML='';
+    document.getElementById('closeEditButton').addEventListener('click', function () {
+        document.getElementById('editFormContainer').style.display = 'none';
+    });
 
-          inputs.forEach(input => {
-              if (!input.value) {
-                  valid=false;
-                  const errorMessage=document.createElement ('div');
-                  errorMessage.textContent=`${input.previousElementSibling.textContent} обязательно для заполнения.`;
-                  errorMessage.style.color='red';
-                  errorContainer.appendChild(errorMessage);
-              }
-          });
 
-          return valid;
-      }
+    document.getElementById('editProductForm').addEventListener('submit', function (event) {
+        event.preventDefault();
 
-      
-      document.getElementById ('productForm').addEventListener ('submit', function (event) {
-          event.preventDefault(); 
-          if (validateForm ('productForm')) {
-              const categoryID=document.getElementById ('categorySelect').value;
-              const name=document.getElementById ('nameSelect').value;
+        const quantityInputValue = document.getElementById('editQuantityInput').value;
+        const unitInputValue = document.getElementById('editUnitSelect').value;
 
-              
-              const productData=jsonData.data.find(product => product.Наименование===name);
-              if (!productData) {
-                  alert ("Товар не найден в базе данных.");
-                  return;
-              }
+        const updatedProduct = {
+            id: currentEditingProductId,
+            quantity: `${quantityInputValue} ${unitInputValue}`
+        };
 
-              const quantityInputValue=document.getElementById ('quantityInput').value; 
-              const unitInputValue=document.getElementById ('unitSelect').value; 
+        updateProductInLocalStorage(updatedProduct);
+        updateProductInTable(updatedProduct);
 
-              const newProduct={
-                  id : productData.ТоварID,
-                  category : categoryID,
-                  name : productData.Наименование,
-                  quantity : `${quantityInputValue} ${unitInputValue}`
-              };
+        location.reload();
 
-              saveProductToLocalStorage(newProduct);
-              addProductToTable(newProduct);
 
-              document.getElementById ('formContainer-store').style.display='none';
-          }
-      });
+        document.getElementById('editFormContainer').style.display = 'none';
+    });
 
-      
-      function saveProductToLocalStorage(product) {
-          let productsList=JSON.parse(localStorage.getItem ("inventoryProductsBuyers")) || [];
-          productsList.push(product);
-          localStorage.setItem ("inventoryProductsBuyers", JSON.stringify(productsList));
-      }
+    function updateProductInLocalStorage(updatedProduct) {
+        let productsList = JSON.parse(localStorage.getItem("inventoryProductsBuyers")) || [];
 
-      
-      function removeProductFromLocalStorage(productId) {
-          let productsList=JSON.parse(localStorage.getItem ("inventoryProductsBuyers")) || [];
-          productsList=productsList.filter(product => product.id !== productId);
-          
-          localStorage.setItem ("inventoryProductsBuyers", JSON.stringify(productsList));
-          
-          if(productsList.length===0){
-               displayEmptyMessage(); 
-           }
-      }
+        productsList.forEach(product => {
+            if (product.id === updatedProduct.id) {
+                product.quantity = updatedProduct.quantity;
+            }
+        });
 
-      
-      document.getElementById ('searchInput').addEventListener ('input', function () {
-           const query=this.value.toLowerCase();
-           const rows=document.querySelectorAll('#inventoryBody tr');
+        localStorage.setItem("inventoryProductsBuyers", JSON.stringify(productsList));
+    }
 
-           rows.forEach(row=>{
-               const cells=row.querySelectorAll ('td');
-               const matches=Array.from(cells).some(cell=>cell.textContent.toLowerCase().includes(query));
-               row.style.display=matches ? '' : 'none';
-           });
-       });
+    function updateProductInTable(updatedProduct) {
+        const rows = document.querySelectorAll('#inventoryBody tr');
+        rows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            if (cells[3].textContent == updatedProduct.id) {
+                cells[2].textContent = updatedProduct.quantity;
+            }
+        });
+    }
+
+
+    function validateForm(formId) {
+        const form = document.getElementById(formId);
+        const inputs = form.querySelectorAll('input[required], select[required]');
+        let valid = true;
+
+
+        const errorContainer = document.getElementById('errorContainer');
+        errorContainer.innerHTML = '';
+
+        inputs.forEach(input => {
+            if (!input.value) {
+                valid = false;
+                const errorMessage = document.createElement('div');
+                errorMessage.textContent = `${input.previousElementSibling.textContent} обязательно для заполнения.`;
+                errorMessage.style.color = 'red';
+                errorContainer.appendChild(errorMessage);
+            }
+        });
+
+        return valid;
+    }
+
+
+    document.getElementById('productForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (validateForm('productForm')) {
+            const categoryID = document.getElementById('categorySelect').value;
+            const name = document.getElementById('nameSelect').value;
+
+
+            const productData = jsonData.data.find(product => product.Наименование === name);
+            if (!productData) {
+                alert("Товар не найден в базе данных.");
+                return;
+            }
+
+            const quantityInputValue = document.getElementById('quantityInput').value;
+            const unitInputValue = document.getElementById('unitSelect').value;
+
+            const newProduct = {
+                id: productData.ТоварID,
+                category: categoryID,
+                name: productData.Наименование,
+                quantity: `${quantityInputValue} ${unitInputValue}`
+            };
+
+            saveProductToLocalStorage(newProduct);
+            addProductToTable(newProduct);
+
+            document.getElementById('formContainer-store').style.display = 'none';
+        }
+    });
+
+
+    function saveProductToLocalStorage(product) {
+        let productsList = JSON.parse(localStorage.getItem("inventoryProductsBuyers")) || [];
+        productsList.push(product);
+        localStorage.setItem("inventoryProductsBuyers", JSON.stringify(productsList));
+    }
+
+
+    function removeProductFromLocalStorage(productId) {
+        let productsList = JSON.parse(localStorage.getItem("inventoryProductsBuyers")) || [];
+        productsList = productsList.filter(product => product.id !== productId);
+
+        localStorage.setItem("inventoryProductsBuyers", JSON.stringify(productsList));
+
+        if (productsList.length === 0) {
+            displayEmptyMessage();
+        }
+    }
+
+
+    document.getElementById('searchInput').addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#inventoryBody tr');
+
+        rows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            const matches = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(query));
+            row.style.display = matches ? '' : 'none';
+        });
+    });
 });
