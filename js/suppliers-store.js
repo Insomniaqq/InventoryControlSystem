@@ -222,6 +222,8 @@ document.addEventListener("DOMContentLoaded", function () {
           updateProductInLocalStorage(updatedProduct);
           updateProductInTable(updatedProduct);
 
+          location.reload();
+
           document.getElementById('editFormContainer').style.display = 'none';
       });
 

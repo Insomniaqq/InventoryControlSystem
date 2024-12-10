@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
             orderItem.classList.add('buyer-item');
 
             orderItem.innerHTML = `
-                <div class="item">ПоставщикID: <span>${currentUser.id}</span></div>
-                <div class="item">ЗаказID: <span>${order.orderID}</span></div>
+                <div class="item">Поставщик ID: <span>${currentUser.id}</span></div>
+                <div class="item">Заказ ID: <span>${order.orderID}</span></div>
                 <div class="item">Дата: <span>${order.date}</span></div>
                 <div class="item">Статус: <span class="status">${order.status}</span></div>
                 <button class="info-button item">Информация</button>
